@@ -1,0 +1,12 @@
+/*
+!/.gitignore
+!/.gitattributes
+/*/
+!/.branch
+!/Website
+Backups/
+Databases/
+Data/
+Website/App_Data/MediaCache/
+Website/temp/
+Website/sitecore/admin/Packages/

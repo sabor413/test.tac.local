@@ -1,0 +1,20 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@using TAC.Utils.Helpers
+@model RenderingModel
+@{
+
+}
+<div class="col-md-4">
+    <ul class="nav nav-stacked">
+        @foreach (var nav in NavigationHelper.GetMetaNavigation(null))
+        {
+            <li class="@Html.IsSelected(nav)">
+                <a href="@Html.SitecoreUrl(nav)" title="@Html.Sitecore().Field(Statics.FieldNames.ContentHeading, nav, new { DisableWebEdit = true })">
+                    @Html.Sitecore().Field(Statics.FieldNames.ContentHeading, nav)
+                </a>
+            </li>
+        }
+    </ul>
+</div>

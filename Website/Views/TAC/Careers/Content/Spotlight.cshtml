@@ -1,0 +1,27 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@using TAC.Utils.Helpers
+@model RenderingModel
+@{
+    var spotlightItem = Model.Item;
+}
+@if (spotlightItem.ID != Model.PageItem.ID || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+{
+    <div class="well @Html.RenderParameter(Model.Rendering.Parameters, Statics.RenderingParameters.Appearance, Statics.FieldNames.Class)">
+        <h5 class="text-uppercase">@Html.RenderParameter(Model.Rendering.Parameters, Statics.RenderingParameters.Title, Sitecore.FieldIDs.DisplayName)</h5>
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <a href="@Html.SitecoreUrl(spotlightItem)">@Html.Sitecore().Field(Statics.FieldNames.ContentHeading, spotlightItem)</a>
+                    </h4>
+                    <p>@Html.Sitecore().Field(Statics.FieldNames.ContentIntro, spotlightItem)</p>
+                </div>
+            </li>
+        </ul>
+        <a href="@Html.SitecoreUrl(spotlightItem)" class="btn btn-default">
+            @Html.Translate(Statics.TranslationKeys.ReadMore)
+        </a>
+    </div>
+}

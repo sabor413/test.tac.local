@@ -1,0 +1,14 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@model RenderingModel
+@{
+
+}
+<div class="container">
+    <h1>
+        @Html.Sitecore().Field(Statics.FieldNames.ContentHeading, Model.Item)
+        <br />
+        <small><p>@Html.Sitecore().Field(Statics.FieldNames.ContentIntro, Model.Item)</p></small>
+    </h1>
+</div>

@@ -1,0 +1,30 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using Sitecore.Mvc.Presentation
+@model RenderingModel
+@{
+  Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>@Html.Sitecore().Field("MetaTitle", new { DisableWebEdit = true })</title>
+    <meta name="description" content="@Html.Sitecore().Field("MetaDescription", new { DisableWebEdit = true })" />
+    
+    @*this is wrong - should it be the URL? even then it is a bit purposeless... the linkmanager is most likely generating the same url*@
+    <meta property="og:url" content="@Html.Sitecore().CurrentRendering.Item" />
+    <link href="/Css/vendor.min.css" type="text/css" rel="stylesheet" />
+    <link href="/Css/niteflight.min.css" type="text/css" rel="stylesheet" />
+    <link href="/Css/addition.css" type="text/css" rel="stylesheet">
+</head>
+    <body class="header-static">
+        @RenderBody()
+    </body>
+</html>

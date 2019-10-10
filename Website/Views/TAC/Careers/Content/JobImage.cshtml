@@ -1,0 +1,13 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@model RenderingModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="thumbnail">
+            @Html.Sitecore().Field(Statics.FieldNames.JobImage, Model.Item, new { @class = "img-responsive" })
+        </div>
+    </div>
+</div>
+<br /><br />

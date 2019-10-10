@@ -1,0 +1,54 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils;
+@using TAC.Utils.Helpers;
+@using TAC.Careers;
+@model RenderingModel
+@{
+    Layout = "~/Views/TAC/Shared/_Careers.cshtml";
+
+    //Normally this code should not be included in the view. For now it is added here for simplicity.
+    var decorationBannerUrl = Html.SitecoreMediaUrl(Statics.FieldNames.DecorationBanner);
+    var headerCssClass = "page-header";
+    var headerBackgroundStyle = "";
+    if (!String.IsNullOrEmpty(decorationBannerUrl))
+    {
+        headerCssClass = headerCssClass + " " + "bg-media bg-parallax";
+        headerBackgroundStyle = string.Format("background-image: url('{0}')", decorationBannerUrl);
+    }
+
+}
+<div id="main-container">
+    <header class="header-static">
+        @Html.Sitecore().Placeholder(Statics.PlaceholderKeys.HeaderNavigation)
+    </header>
+    <main role="main">
+
+        @using (Html.BeginHeader(new { @class = headerCssClass, style = headerBackgroundStyle  }))
+        {
+            @Html.Sitecore().Placeholder(Statics.PlaceholderKeys.HeaderContent)
+        }
+        <section class="section section-full">
+            <div class="container">
+                @Html.Sitecore().Placeholder(Statics.PlaceholderKeys.MainContent)
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                @Html.Sitecore().Placeholder(Statics.PlaceholderKeys.FooterContent)
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <small class="copyright">@Html.Translate(Statics.TranslationKeys.Copyright, "", DateTime.Now.Year, @Html.ApplicationVersion(typeof(RouteConfig).Assembly))</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

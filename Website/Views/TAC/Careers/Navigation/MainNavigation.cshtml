@@ -1,0 +1,30 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils.Helpers;
+@model RenderingModel
+@{
+
+}
+<nav class="navbar navbar-default navbar-static" id="mainNavbar">
+    <div class="container">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="@Html.SitecoreSiteUrl()">
+                <span class="logo">
+                    <img src="/Images/TAC_Header_Logo.png" alt="The Adventure Company" width="400" height="60" />
+                </span>
+            </a>
+
+        </div>
+        <div class="navbar-brand">
+            <div class="collapse navbar-collapse" id="siteNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                        <a class="text-uppercase" href="@Html.SitecoreSiteUrl()">
+                            Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

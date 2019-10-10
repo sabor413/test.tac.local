@@ -1,0 +1,56 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@using TAC.Utils.Helpers
+@using Sitecore.Mvc.Extensions;
+
+@model RenderingModel
+@{
+    var job = Model.Item;
+    var jobHours = Html.RenderLinkField(Statics.FieldNames.JobHours);
+    var jobLocation = Html.RenderLinkField(Statics.FieldNames.JobLocation);
+    var jobType = Html.RenderLinkField(Statics.FieldNames.JobType);
+    var jobTravel = Html.Sitecore().Field(Statics.FieldNames.JobTravel);
+
+}
+@using (Html.EditFrame(Model.Item.Paths.FullPath, "Job Details", "Job Details", "Job Details", null, null))
+{
+    <div class="well bg-primary">
+        <h5 class="text-uppercase">@Html.Translate(Statics.TranslationKeys.JobDetails)</h5>
+        @if (!String.IsNullOrEmpty(jobHours.ToString()) || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+        {
+            <div class="clearfix">
+                <h4 class="media-heading pull-left">
+                    @Html.Translate(Statics.FieldNames.JobHours)
+                </h4>
+                <p class="pull-right">@jobHours&nbsp;</p>
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(jobLocation.ToString()) || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+        {
+            <div class="clearfix">
+                <h4 class="media-heading pull-left">
+                    @Html.Translate(Statics.FieldNames.JobLocation)
+                </h4>
+                <p class="pull-right">@jobLocation&nbsp;</p>
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(jobType.ToString()) || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+        {
+            <div class="clearfix">
+                <h4 class="media-heading pull-left">
+                    @Html.Translate(Statics.FieldNames.JobType)
+                </h4>
+                <p class="pull-right">@jobType&nbsp;</p>
+            </div>
+        }@if (!String.IsNullOrEmpty(jobTravel.ToString()) || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+        {
+            <div class="clearfix">
+                <h4 class="media-heading pull-left">
+                    @Html.Translate(Statics.FieldNames.JobTravel)
+                </h4>
+                <p class="pull-right">@jobTravel&nbsp;</p>
+            </div>
+        }
+    </div>
+}

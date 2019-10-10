@@ -1,0 +1,27 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@using TAC.Utils.Helpers
+@using Sitecore.Mvc.Extensions
+
+@model RenderingModel
+@{
+    var relatedJobs = SitecoreHelper.GetMultiListItems(Statics.FieldNames.JobRelated, Model.Item);
+}
+@if (relatedJobs.Count > 0 || Sitecore.Context.PageMode.IsExperienceEditorEditing) {
+    using (Html.EditFrame(Model.Item.Paths.FullPath, "Related Jobs", "Related Jobs", "Related Jobs", null, null)) {
+<div class="well bg-info">
+    <h5 class="text-uppercase">@Html.Translate(Statics.FieldNames.JobRelated)</h5>
+    <div>
+        <ul>
+            @foreach (var job in relatedJobs)
+            {
+            <li>
+                <a href="@Html.SitecoreUrl(job)">@Html.Sitecore().Field(Statics.FieldNames.ContentHeading, job, new { DisableWebEdit = true })</a>
+            </li>
+            }
+        </ul>
+    </div>
+</div>
+    }
+}

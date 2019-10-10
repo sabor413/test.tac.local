@@ -1,0 +1,18 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using TAC.Utils
+@using TAC.Utils.Helpers
+@model RenderingModel
+@{
+    var jobRequirements = Html.Sitecore().Field(Statics.FieldNames.JobRequirements, Model.Item);
+}
+@if (!String.IsNullOrEmpty(jobRequirements.ToString()) || Sitecore.Context.PageMode.IsExperienceEditorEditing)
+{
+    <h3>@Html.Translate(Statics.FieldNames.JobRequirements)</h3>
+    <div>
+        @jobRequirements
+    </div>
+}
+<div>
+    @Html.Sitecore().Field(Statics.FieldNames.JobFooter, Model.Item)
+</div>

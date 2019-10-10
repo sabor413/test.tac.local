@@ -1,0 +1,14 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@model RenderingModel
+@{
+
+}
+<div class="row">
+    <div class="col-md-8">
+        @Html.Sitecore().Placeholder("columnContent")
+    </div>
+    <div class="col-md-4">
+        @Html.Sitecore().Placeholder("columnRight")
+    </div>
+</div>
